@@ -37,7 +37,7 @@
                 <div class="row align-items-center position-relative">
                     <div class="col-3 ">
                         <div class="site-logo">
-                            <a href="./index.php">RENTAL CAHAYA</a>
+                            {{-- <a href="./index.php">RENTAL CAHAYA</a> --}}
                             <div class="modal-footer"> </div>
                         </div>
                     </div>

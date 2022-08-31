@@ -30,7 +30,7 @@
                                             @php $no=1; @endphp
                                             @foreach ($wilayah as $key)
                                                 <tr>
-                                                    <td>{{ $no++ }}
+                                                    <td>{{ $no++ }}</td>
                                                     <td>{{ $key->nama_daerah }}</td>
 
 
@@ -46,7 +46,7 @@
                                                                 class="btn btn-danger pull-right mr-3">Hapus</button>
                                                         </form>
                                                     </td>
-                                                    </td>
+                                                    
                                                 </tr>
                                             @endforeach
                                     </table>

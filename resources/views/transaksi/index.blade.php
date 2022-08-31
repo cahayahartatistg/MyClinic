@@ -9,8 +9,8 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title">DATA TINDAKAN</h4>
-                                <a href="" class="btn btn-primary float-left"> Tambah Data</a>
+                                <h4 class="card-title">HISTORY TRANSAKSI</h4>
+                                {{-- <a href="{{ route('tindakan.create') }}" class="btn btn-warning float-left"> Tambah Data</a> --}}
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -22,16 +22,35 @@
                                                 <th>Nama Pasien</th>
                                                 <th>Keluhan</th>
                                                 <th>Tindakan</th>
+                                                <th>Obat</th>
                                                 <th>Qty</th>
                                                 <th>Harga</th>
                                                 <th>Total</th>
-                                                <th class="text-center">
+
+                                                {{-- <th class="text-center">
                                                     Aksi
-                                                </th>
+                                                </th> --}}
 
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php $no=1; @endphp
+                                            @foreach ($tindakan as $key)
+                                                <tr>
+                                                    <td>{{ $no++ }}</td>
+                                                    <td>{{ $key->pasien->nama_pasien }}</td>
+                                                    <td>{{ $key->pasien->keluhan }}</td>
+                                                    <td>{{ $key->tindakan }}</td>
+                                                    <td>{{ $key->keranjang->nama_obat }}</td>
+                                                    <td>{{ $key->jumlah }}</td>
+                                                    <td>{{ $key->keranjang->harga }}</td>
+
+
+
+                                                 
+
+                                                </tr>
+                                            @endforeach
 
 
                                     </table>

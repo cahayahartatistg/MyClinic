@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\TindakanModel;
 
 class transaksicontroller extends Controller
 {
@@ -13,7 +14,8 @@ class transaksicontroller extends Controller
      */
     public function index()
     {
-        //
+        $tindakan = TindakanModel::all();
+        return view('transaksi.index', compact('tindakan'));
     }
 
     /**

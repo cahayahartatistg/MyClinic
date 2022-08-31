@@ -91,6 +91,9 @@ class WilayahController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $wilayah = WilayahModel::find($id);
+        $wilayah->delete();
+
+        return redirect('/wilayah');
     }
 }

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\KeranjangModel;
+
 use Illuminate\Http\Request;
+use App\KeranjangModel;
+use App\ObatModel;
+use App\PasienModel;
 
 class keranjang extends Controller
 {
@@ -14,8 +17,11 @@ class keranjang extends Controller
      */
     public function index()
     {
+        $pasien = PasienModel::all();
+        $obat = ObatModel::all();
         $keranjang = KeranjangModel::all();
-        return view('transaksi.index', compact('keranjang'));
+
+        return view('tindakan.index', compact('keranjang', 'obat', 'pasien'));
     }
 
     /**
@@ -25,7 +31,9 @@ class keranjang extends Controller
      */
     public function create()
     {
-        //
+        $obat = ObatModel::all();
+        $keranjang = KeranjangModel::all();
+        return view('Keranjang.keranjang', compact('keranjang', 'obat'));
     }
 
     /**
@@ -36,7 +44,18 @@ class keranjang extends Controller
      */
     public function store(Request $request)
     {
-        //
+        KeranjangModel::create([
+            'id_obat' => $request->id_obat,
+            'jumlah' => $request->jumlah
+            // 'total' => $request->total
+        ]);
+
+        // return redirect('/tindakan')->with('success', 'Permintaan anda sedang di proses!');
+        $keranjang = KeranjangModel::with('obat')->get();
+        // $obat = ObatModel::all();
+        // dd($keranjang[0]->obat->nama_obat/);
+        // return redirect('tindakan/lanjuttindakan');
+        return view('Keranjang.tambah_keranjang', compact('keranjang'));
     }
 
     /**
@@ -58,7 +77,13 @@ class keranjang extends Controller
      */
     public function edit($id)
     {
-        //
+        $obat = ObatModel::all();
+        $keranjang = KeranjangModel::find($id);
+        return view('Keranjang.edit', compact('obat', 'keranjang'));
+
+        // $keranjang = KeranjangModel::with('obat')->get();
+        // return view('Keranjang.edit', compact('keranjang','keranjangs'));
+
     }
 
     /**
@@ -70,7 +95,12 @@ class keranjang extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $keranjang = KeranjangModel::find($id);
+        $keranjang->id_obat = $request->id_obat;
+        $keranjang->jumlah = $request->jumlah;
+        $keranjang->save();
+
+        return redirect('/keranjang');
     }
 
     /**
@@ -81,6 +111,9 @@ class keranjang extends Controller
      */
     public function destroy($id)
     {
-        //
+        $keranjang = KeranjangModel::find($id);
+        $keranjang->delete();
+
+        return redirect('/keranjang');
     }
 }

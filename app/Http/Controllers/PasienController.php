@@ -103,4 +103,9 @@ class PasienController extends Controller
 
         return redirect('/pasien');
     }
+    public function logout(Request $request)
+    {
+        session()->flush();
+        return redirect('login');
+    }
 }

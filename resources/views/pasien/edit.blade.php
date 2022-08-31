@@ -1,15 +1,9 @@
 @extends('layout.boostrap1')
 @include('components1.sidebar');
+@include('components1/navbar');
 @section('content')
 
-    <style>
-        .img-ku {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            z-index: -1;
-        }
-    </style>
+ 
     <div class="content">
         <div class="container-fluid">
             <div class="row justify-content-center">

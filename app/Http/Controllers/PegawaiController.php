@@ -107,4 +107,10 @@ class PegawaiController extends Controller
 
         return redirect('/pegawai');
     }
+
+    public function logout(Request $request)
+    {
+        session()->flush();
+        return redirect('login');
+    }
 }

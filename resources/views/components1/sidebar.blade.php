@@ -29,6 +29,18 @@
                     <p>Transaksi</p>
                 </a>
             </li>
+            {{-- <li class="sidebar-item active">
+                <a class="btn btn-danger pull-right mr-3" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                    onsubmit="return confirm('Anda yakin ingin keluar?')" class="d-none">
+                    @csrf
+                </form>
+            </li> --}}
         </ul>
     </div>
 </div>

@@ -9,8 +9,8 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header card-header-primary">
-                                <h4 class="card-title">DATA TINDAKAN</h4>
-                                <a href="{{ route('tindakan.create') }}" class="btn btn-warning float-left"> Tambah Data</a>
+                                <h4 class="card-title">DATA KERANJANG</h4>
+                                <a href="{{ url('tindakan/lanjuttindakan') }}" class="btn btn-warning float-left"> Tambah</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -18,39 +18,28 @@
                                         <thead class=" text-primary">
                                             <tr>
 
-                                                <th>ID </th>
-                                                <th>Nama Pasien</th>
-                                                <th>Keluhan</th>
-                                                <th>Tindakan</th>
-                                                <th>Obat</th>
+                                                <th>No</th>
+                                                <th>Nama Obat</th>
                                                 <th>Qty</th>
-                                                <th>Harga</th>
-                                                <th>Total</th>
-
-                                                {{-- <th class="text-center">
+                                                <th class="text-center">
                                                     Aksi
-                                                </th> --}}
-
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @php $no=1; @endphp
-                                            @foreach ($tindakan as $key)
+
+                                            @foreach ($keranjang as $data)
                                                 <tr>
                                                     <td>{{ $no++ }}</td>
-                                                    <td>{{ $key->pasien->nama_pasien }}</td>
-                                                    <td>{{ $key->pasien->keluhan }}</td>
-                                                    <td>{{ $key->tindakan }}</td>
-                                                    <td>{{ $key->keranjang->nama_obat }}</td>
-                                                    <td>{{ $key->jumlah }}</td>
-                                                    <td>{{ $key->keranjang->harga }}</td>
-
-
+                                                    <td>{{ $data->obat->nama_obat }}</td>
+                                                    <td>{{ $data->jumlah }}</td>
+                                                    {{-- <td>{{ $data->total }}</td> --}}
 
                                                     {{-- <td class="d-flex justify-content-around">
-                                                        <a class="btn btn-warning pull-right"
-                                                            href="{{ route('tindakan.edit', $key->id) }}">Edit</a>
-                                                        <form action="{{ route('tindakan.destroy', $key->id) }}"
+                                                        <a class="btn btn-primary pull-right"
+                                                            href="{{ route('keranjang.edit', $data->id) }}">Edit</a>
+                                                        <form action="{{ route('keranjang.destroy',$data->id) }}"
                                                             method="post" onsubmit="return confirm('yakin hapus data?') ">
                                                             @csrf
                                                             @method('delete')
@@ -60,9 +49,9 @@
                                                         </form>
                                                     </td> --}}
 
-                                                </tr>
-                                            @endforeach
 
+                                                </tr>
+                                            @endforeach;
 
                                     </table>
 
@@ -72,6 +61,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <a href="{{ route('tindakan.index') }}" class="btn btn-primary">Lanjutkan pembayaran</a>
                 </div>
             </div>
         </div>

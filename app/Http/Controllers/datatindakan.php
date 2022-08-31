@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\TindakanModel;
+//use App\PasienModel;
 
 class datatindakan extends Controller
 {
@@ -25,7 +26,7 @@ class datatindakan extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -36,7 +37,11 @@ class datatindakan extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // TindakanModel::create([
+        //     'id_pasien' => $request->id_pasien,
+        //     'tindakan' => $request->tindakan
+            
+        // ]);
     }
 
     /**

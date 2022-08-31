@@ -1,5 +1,6 @@
 <?php
 
+use App\ObatModel;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,24 +22,36 @@ use Illuminate\Support\Facades\Route;
 Route::resource('login', 'loginController');
 Route::resource('register', 'registerController');
 
+Route::resource('pegawai', 'PegawaiController');
+Route::resource('obat', 'ObatController');
+Route::resource('wilayah', 'WilayahController');
+
+Route::resource('datapasien', 'datapasien');
+Route::resource('datatindakan', 'datatindakan');
+Route::resource('datatransaksi', 'datatransaksi');
 
 Route::middleware(['admin'])->group(function () {
-    Route::resource('obat', 'ObatController');
-    Route::resource('wilayah', 'WilayahController');
-    Route::resource('pegawai', 'PegawaiController');
-    Route::resource('datapasien', 'datapasien');
-    Route::resource('datatindakan', 'datatindakan');
-    Route::resource('datatransaksi', 'datatransaksi');
 });
 Route::middleware(['user'])->group(function () {
-    Route::view('user', 'layout/boostrap');
-    Route::resource('pasien', 'PasienController');
-    Route::resource('tindakan', 'TindakanController');
-    Route::resource('transaksi', 'transaksicontroller');
 });
+Route::view('user', 'layout/boostrap');
+Route::resource('pasien', 'PasienController');
+Route::resource('tindakan', 'TindakanController');
+Route::resource('transaksi', 'transaksicontroller');
+Route::resource('keranjang', 'keranjang');
 
 Route::get('logout', 'logincontroller@logout');
 Route::get('/home', 'homecontroller@index');
+
+Route::get('/tambah-keranjang/{id_obat}', function($id_obat){
+    $obat = ObatModel::find($id_obat);
+    return view('Keranjang.keranjang', ['obat'=> $obat]);
+})->name('tambah-keranjang');
+
+Route::get('/edit-keranjang/{id_obat}', function($id_obat){
+    $obat = ObatModel::find($id_obat);
+    return view('Keranjang.edit', ['obat'=> $obat]);
+})->name('edit-keranjang');
 
 
 Route::get('/tampilan', function () {

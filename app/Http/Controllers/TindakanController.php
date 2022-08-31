@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\TindakanModel;
 use App\PasienModel;
+use App\KeranjangModel;
 use App\ObatModel;
 // use Laravel\Tinker\TinkerCaster;
 
@@ -28,9 +29,12 @@ class TindakanController extends Controller
      */
     public function create()
     {
-        $obat = ObatModel::all();
+        // $obat = ObatModel::all();
+        
         $pasien = PasienModel::all();
-        return view('tindakan.create', compact('obat', 'pasien'));
+        $tindakan = TindakanModel::all();
+        $keranjang = KeranjangModel::all();
+        return view('tindakan.create', compact('keranjang', 'pasien', 'tindakan'));
     }
 
     /**
@@ -43,7 +47,9 @@ class TindakanController extends Controller
     {
         TindakanModel::create([
             'id_pasien' => $request->id_pasien,
-            'tindakan' => $request->tindakan
+            'tindakan' => $request->tindakan,
+            'id_keranjang'=>$request->id_keranjang,
+            'total'=>$request->total
         ]);
 
         // return redirect('/tindakan')->with('success', 'Permintaan anda sedang di proses!');

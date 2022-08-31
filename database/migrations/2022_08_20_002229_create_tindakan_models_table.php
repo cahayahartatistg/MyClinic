@@ -17,7 +17,7 @@ class CreateTindakanModelsTable extends Migration
             $table->id();
             $table->integer('id_pasien');
             $table->string('tindakan');
-            $table->integer('id_obat');
+            $table->integer('id_keranjang');
             $table->timestamps();
         });
     }

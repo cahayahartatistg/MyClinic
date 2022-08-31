@@ -14,6 +14,7 @@ class CreateKeranjangsTable extends Migration
     public function up()
     {
         Schema::create('keranjangs', function (Blueprint $table) {
+            
             $table->integer('id_obat');
             $table->integer('jumlah');
             $table->timestamps();

@@ -11,7 +11,7 @@
                         <div class="card">
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title">DATA PASIEN</h4>
-                                <a href="{{ route('pasien.create') }}" class="btn btn-primary float-left"> Tambah Data</a>
+                                <a href="{{ route('pasien.create') }}" class="btn btn-warning float-left"> Tambah Data</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -44,7 +44,7 @@
 
 
                                                     <td class="d-flex justify-content-around">
-                                                        <a class="btn btn-primary pull-right"
+                                                        <a class="btn btn-warning pull-right"
                                                             href="{{ route('pasien.edit', $key->id) }}">Edit</a>
                                                         <form action="{{ route('pasien.destroy', $key->id) }}"
                                                             method="post" onsubmit="return confirm('yakin hapus data?') ">
